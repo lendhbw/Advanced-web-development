@@ -169,10 +169,20 @@ function isResourceDescriptionValid(value) {
   return lengthValid && charactersValid;
 }
 
+function isResourcePriceValid(value) {
+  const trimmed = value.trim();
+  if (trimmed === "") return false;
+
+  const number = Number(trimmed);
+  return !Number.isNaN(number) && number >= 0;
+}
+
 // >>>>>>>>> Validation wiring <<<<<<<
 
 let isNameOk = false;
 let isDescOk = false;
+let isPriceOk = false;
+let isPriceUnitOk = true; // Default to true since we have a default selection
 
 function setInputVisualState(input, state) {
   // Reset to neutral base state (remove only our own validation-related classes)
@@ -201,7 +211,7 @@ function setInputVisualState(input, state) {
 }
 
 function syncButtonState() {
-  const canCreate = isNameOk && isDescOk;
+  const canCreate = isNameOk && isDescOk && isPriceOk && isPriceUnitOk;;
   setButtonEnabled(createButton, canCreate);
 }
 
@@ -241,3 +251,5 @@ attachValidation(resourceNameInput, isResourceNameValid, (v) => (isNameOk = v));
 const resourceDescriptionInput = createResourceDescriptionInput(resourceDescriptionContainer);
 attachValidation(resourceDescriptionInput, isResourceDescriptionValid, (v) => (isDescOk = v));
 
+const resourcePriceInput = document.getElementById("resourcePrice");
+attachValidation(resourcePriceInput, isResourcePriceValid, (v) => (isPriceOk = v));
