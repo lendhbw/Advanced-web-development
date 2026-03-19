@@ -1,0 +1,55 @@
+// src/validators/resource.validators.js
+import { body } from "express-validator";
+
+// Validation rules for POST /api/resources
+export const resourceValidators = [
+  body("action")
+    .exists({ checkFalsy: true })
+    .withMessage("action is required")
+    .trim()
+    .isIn(["create"])
+    .withMessage("action must be 'create'"),
+
+  body("resourceName")
+    .exists({ checkFalsy: true })
+    .withMessage("Is required.")
+    .isString()
+    .withMessage("Must be text.")
+    .trim()
+    .matches(/^[A-Za-z0-9 ]+$/)
+    .withMessage("Only letters, numbers, and spaces are allowed.")
+    .isLength({ min: 5, max: 30 })
+    .withMessage("Must be between 5 and 30 characters."),
+
+  body("resourceDescription")
+    .exists({ checkFalsy: true })
+    .withMessage("Is required.")
+    .isString()
+    .withMessage("Must be text.")
+    .trim()
+    .matches(/^[A-Za-z0-9 ]+$/)
+    .withMessage("Only letters, numbers, and spaces are allowed.")
+    .isLength({ min: 10, max: 50 })
+    .withMessage("Must be between 10 and 50 characters."),
+
+  body("resourceAvailable")
+    .exists()
+    .withMessage("resourceAvailable is required.")
+    .isBoolean()
+    .withMessage("resourceAvailable must be boolean."),
+
+  body("resourcePrice")
+    .exists()
+    .withMessage("resourcePrice is required")
+    .isFloat({ min: 0 })
+    .withMessage("Must be positive number."),
+
+  body("resourcePriceUnit")
+    .exists({ checkFalsy: true })
+    .withMessage("resourcePriceUnit is required")
+    .isString()
+    .withMessage("resourcePriceUnit must be a string")
+    .trim()
+    .isIn(["hour", "day", "week", "month"])
+    .withMessage("resourcePriceUnit must be 'hour', 'day', 'week', or 'month'"),
+];
