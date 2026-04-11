@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Hero() {
   return (
     <div className="lg:col-span-7">
@@ -15,19 +17,19 @@ function Hero() {
       </p>
 
       <div className="mt-8 grid grid-cols-2 gap-4">
-        <a
-          href="/login"
-          className="w-full rounded-2xl bg-brand-primary px-6 py-3 text-center text-sm font-semibold text-white shadow-soft transition-all duration-200 ease-out hover:bg-brand-dark/80"
+        <Link
+          to="/login"
+          className="w-full rounded-2xl bg-brand-primary px-6 py-3 text-center text-sm font-semibold text-white shadow-soft transition-all duration-200 ease-out hover:bg-brand-dark/80 cursor-not-allowed pointer-events-none"
         >
           Get started
-        </a>
+        </Link>
 
-        <a
-          href="/bookings"
-          className="w-full rounded-2xl border border-brand-blue px-6 py-3 text-center text-sm font-semibold transition-all duration-200 ease-out hover:bg-brand-dark/80 hover:text-white"
+        <Link
+          to="/bookings"
+          className="w-full rounded-2xl border border-brand-blue px-6 py-3 text-center text-sm font-semibold transition-all duration-200 ease-out hover:bg-brand-dark/80 hover:text-white cursor-not-allowed pointer-events-none"
         >
           View bookings
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -1,25 +1,15 @@
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import StatusCard from "./components/StatusCard";
-import BookingsSection from "./components/BookingsSection";
-import Footer from "./components/Footer";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900">
-      <Header />
-
-      <main className="mx-auto max-w-7xl px-6 flex-grow">
-        <section className="py-16 grid gap-12 lg:grid-cols-12 items-stretch">
-          <Hero />
-          <StatusCard />
-        </section>
-
-        <BookingsSection />
-      </main>
-
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

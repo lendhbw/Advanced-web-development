@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function StatusCard() {
   return (
     <aside className="lg:col-span-5">
@@ -23,19 +24,19 @@ function StatusCard() {
         </p>
 
         <div className="mt-6 grid grid-cols-2 gap-4">
-          <a
-            href="/register"
+          <Link
+            to="/register"
             className="rounded-xl border border-brand-dark px-4 py-3 text-center text-sm font-semibold transition-all duration-200 ease-out hover:bg-brand-dark hover:text-white"
           >
             Register
-          </a>
+          </Link>
 
-          <a
-            href="/login"
-            className="rounded-xl bg-brand-primary px-4 py-3 text-center text-sm font-semibold text-white transition-all duration-200 ease-out hover:bg-brand-dark"
+          <Link
+            to  ="/login"
+            className="rounded-xl bg-brand-primary px-4 py-3 text-center text-sm font-semibold text-white transition-all duration-200 ease-out hover:bg-brand-dark cursor-not-allowed pointer-events-none"
           >
             Sign in
-          </a>
+          </Link>
         </div>
       </div>
     </aside>
